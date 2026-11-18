@@ -1,15 +1,1 @@
-{
-  "name": "Kiki's Healing Universe of Everything",
-  "short_name": "Kiki's Universe",
-  "description": "Kiki's all-ages healing universe: games, posters, stories, and sparkle!",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#ff9ff3",
-  "theme_color": "#ff6bcb",
-  "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-  ]
-}
+{"background_color":"#ff9ff3","description":"Kiki's all-ages healing universe: games, posters, stories, and sparkle!","display":"standalone","icons":[{"sizes":"192x192","src":"icon-192.png","type":"image/png"},{"purpose":"any maskable","sizes":"512x512","src":"icon-512.png","type":"image/png"}],"name":"Kiki's Healing Universe of Everything","orientation":"portrait","scope":".","short_name":"Kiki's Universe","start_url":".","theme_color":"#ff6bcb"}

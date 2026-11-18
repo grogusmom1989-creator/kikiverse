@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff6bcb">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="KikiVerse">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>KikiVerse — Kiki's World on GitHub Pages 🌌</title>
 <style>
   body { font-family: system-ui, sans-serif; text-align: center; padding: 48px 20px; background: #1a0b2e; color: #ffe9f7; margin: 0; }
@@ -24,5 +30,10 @@
     <a class="door" href="https://1dkikiworldhq.neocities.org/">🏰 Kiki's Aetheria — Kiki's World at Storyspire (main site)</a>
   </div>
   <p class="note">This is one of Kiki's public doors. Her private world stays private. 💜</p>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
 </body>
 </html>
