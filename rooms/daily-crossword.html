@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Crossword · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 14px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:34px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 16px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:20px; margin:16px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  button.puz { background:#ffd76a; color:#4a234a; border:2px solid #b8860b; border-radius:999px; padding:10px 18px; font-size:16px; font-family:Georgia,serif; margin:4px; cursor:pointer; }
+  button.act { background:#ffb7dd; }
+  table.xw { border-collapse:collapse; margin:14px auto; }
+  table.xw td { width:26px; height:26px; border:1px solid #8a2be2; background:#241536; padding:0; }
+  table.xw td.fill { background:#fff0f5; }
+  table.xw input { width:100%; height:100%; border:0; background:transparent; text-align:center; font-size:15px; font-family:Georgia,serif; text-transform:uppercase; color:#4a234a; padding:0; }
+  table.xw input.right { background:#ffe9a8; font-weight:bold; }
+  .clues { text-align:left; font-size:15px; line-height:1.55; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>🧩 Daily Crossword</h1>
+  <p class="tag">Space Viewing Room No. 8 · Kiki's daily puzzles, playable right here</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="card">
+    <p id="puzbtns"></p>
+    <h2 id="ptitle"></h2>
+    <div id="grid"></div>
+    <p><button class="puz act" onclick="check()">✔ Check my answers</button> <button class="puz" onclick="reveal()">👀 Reveal letters</button></p>
+    <p id="msg"></p>
+    <div class="clues" id="clues"></div>
+  </div>
+  <div class="card">
+    <h2>🚪 About this room</h2>
+    <p>The public viewing copy of Kiki's <strong>Daily Crossword</strong> Space. A fresh puzzle blooms in Muse every morning; the finished ones live here to play anytime.</p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+<script>
+var PUZZLES = [{"no": 1, "date": "2026-11-10", "theme": "Gems and Jams", "words": [{"w": "VIOLIN", "clue": "It gets rosined before the concert", "r": 0, "c": 7, "d": "D"}, {"w": "QUEEN", "clue": "Band behind a certain Bohemian rhapsody", "r": 0, "c": 14, "d": "D"}, {"w": "STAGE", "clue": "Where the curtain rises", "r": 1, "c": 5, "d": "D"}, {"w": "FIDDLE", "clue": "It plays second in the band \u2014 or first at a hoedown", "r": 2, "c": 9, "d": "A"}, {"w": "DIRECTION", "clue": "One way or another, it's where the compass points", "r": 2, "c": 11, "d": "D"}, {"w": "GLITTER", "clue": "Party sparkle that outstays its welcome?", "r": 4, "c": 5, "d": "A"}, {"w": "CANVAS", "clue": "Blank slate for a painter", "r": 6, "c": 9, "d": "D"}, {"w": "HARMONY", "clue": "Notes that agree to get along", "r": 6, "c": 13, "d": "D"}, {"w": "DIAMONDART", "clue": "Mosaic made of a thousand tiny resin gems", "r": 7, "c": 2, "d": "A"}, {"w": "APPLAUSE", "clue": "It can be thunderous without any storm?", "r": 7, "c": 4, "d": "D"}, {"w": "ALBUM", "clue": "Home for a dozen tracks", "r": 9, "c": 0, "d": "D"}, {"w": "STYLES", "clue": "Harry who flew solo from One Direction", "r": 9, "c": 2, "d": "D"}, {"w": "RAINBOW", "clue": "Arc after a shower", "r": 10, "c": 8, "d": "A"}, {"w": "BOYBAND", "clue": "Matching outfits, five-part harmonies?", "r": 11, "c": 0, "d": "A"}, {"w": "SPARKLE", "clue": "Twinkle's fancy cousin", "r": 13, "c": 4, "d": "A"}]}, {"no": 2, "date": "2026-11-11", "theme": "Woodland Tunes & Twinkles", "words": [{"w": "HONEYPOT", "clue": "What Pooh is always hoping to find full in the Hundred Acre Wood", "r": 0, "c": 8, "d": "D"}, {"w": "BLANKET", "clue": "Bed cover that keeps you warm", "r": 2, "c": 5, "d": "A"}, {"w": "MORNING", "clue": "___ glory, the trumpet-shaped bloom that opens at dawn", "r": 3, "c": 4, "d": "D"}, {"w": "WINDOW", "clue": "Glass opening in a wall that lets in light", "r": 4, "c": 0, "d": "A"}, {"w": "EEYORE", "clue": "Gloomy donkey neighbor in the Hundred Acre Wood tales", "r": 6, "c": 6, "d": "D"}, {"w": "ENCORE", "clue": "One more, when the audience simply will not go home?", "r": 6, "c": 10, "d": "D"}, {"w": "RHINESTONE", "clue": "Imitation sparkler that sounds like it belongs on a German riverbank?", "r": 7, "c": 2, "d": "A"}, {"w": "CANDLE", "clue": "Wax stick with a wick you light", "r": 8, "c": 13, "d": "D"}, {"w": "TIARA", "clue": "Jeweled semicircular headpiece for a formal evening", "r": 10, "c": 3, "d": "D"}, {"w": "GARDEN", "clue": "Place that really grows on you?", "r": 10, "c": 8, "d": "A"}, {"w": "PIGLET", "clue": "Pooh's very small, timid friend, nervous about heffalumps", "r": 11, "c": 2, "d": "A"}, {"w": "CROWN", "clue": "It caps a monarch, a tooth, or a hilltop?", "r": 13, "c": 2, "d": "A"}, {"w": "BASKET", "clue": "You can shoot for it or fill it with eggs?", "r": 13, "c": 9, "d": "A"}]}, {"no": 3, "date": "2026-11-12", "theme": "Crowns, Cartoons & Cozy Corners", "words": [{"w": "SEQUIN", "clue": "Flat little sparkler sewn on for shine?", "r": 0, "c": 11, "d": "D"}, {"w": "MEADOW", "clue": "Open grassy field", "r": 1, "c": 0, "d": "D"}, {"w": "MELODY", "clue": "The hummable line that carries a song", "r": 1, "c": 2, "d": "D"}, {"w": "KITCHEN", "clue": "Room that gets steamed up over dinner?", "r": 1, "c": 4, "d": "D"}, {"w": "LANTERN", "clue": "Portable light in a protective case", "r": 1, "c": 7, "d": "A"}, {"w": "NOTEBOOK", "clue": "Bound pages waiting for a pen", "r": 1, "c": 13, "d": "D"}, {"w": "EVENING", "clue": "___ falls, as the day winds down", "r": 2, "c": 0, "d": "A"}, {"w": "SAPPHIRE", "clue": "Blue gemstone in a September birthstone slot", "r": 4, "c": 6, "d": "A"}, {"w": "PRINCESS", "clue": "Royal who might wear a tiara to breakfast?", "r": 4, "c": 8, "d": "D"}, {"w": "ENCHANTED", "clue": "Spellbound, like a forest in a fairy tale?", "r": 7, "c": 3, "d": "A"}, {"w": "UMBRELLA", "clue": "Portable roof that folds when the sun comes out?", "r": 9, "c": 4, "d": "A"}, {"w": "MICKEY", "clue": "Mouse who debuted in Steamboat Willie", "r": 9, "c": 5, "d": "D"}, {"w": "CRYSTAL", "clue": "___ clear, as in perfectly transparent", "r": 11, "c": 5, "d": "A"}]}];
+var cur = 2, sol = {};
+function buildBtns(){
+  var h = "";
+  PUZZLES.forEach(function(p, i){ h += '<button class="puz" onclick="load(' + i + ')">No. ' + p.no + '</button>'; });
+  document.getElementById('puzbtns').innerHTML = h;
+}
+function load(i){
+  cur = i; sol = {};
+  var p = PUZZLES[i];
+  document.getElementById('ptitle').textContent = 'Puzzle No. ' + p.no + ' · ' + p.theme + ' · ' + p.date;
+  document.getElementById('msg').textContent = '';
+  var cells = {};
+  p.words.forEach(function(wd){
+    for (var k = 0; k < wd.w.length; k++){
+      var r = wd.r + (wd.d === 'D' ? k : 0), c = wd.c + (wd.d === 'A' ? k : 0);
+      cells[r + ',' + c] = wd.w[k]; sol[r + ',' + c] = wd.w[k];
+    }
+  });
+  var h = '<table class="xw">';
+  for (var r = 0; r < 15; r++){
+    h += '<tr>';
+    for (var c = 0; c < 15; c++){
+      if (cells[r + ',' + c]) h += '<td class="fill"><input maxlength="1" data-k="' + r + ',' + c + '"></td>';
+      else h += '<td></td>';
+    }
+    h += '</tr>';
+  }
+  h += '</table>';
+  document.getElementById('grid').innerHTML = h;
+  var ac = [], dn = [];
+  p.words.forEach(function(wd){ (wd.d === 'A' ? ac : dn).push(wd); });
+  function list(arr, name){
+    var s = '<p><strong>' + name + '</strong></p>';
+    arr.forEach(function(wd){ s += '<p>' + wd.clue + ' (' + wd.w.length + ')</p>'; });
+    return s;
+  }
+  document.getElementById('clues').innerHTML = list(ac, 'Across') + list(dn, 'Down');
+}
+function eachInput(fn){ document.querySelectorAll('#grid input').forEach(fn); }
+function check(){
+  var wrong = 0, total = 0;
+  eachInput(function(inp){
+    total++;
+    if (inp.value.toUpperCase() === sol[inp.getAttribute('data-k')]) inp.classList.add('right');
+    else { inp.classList.remove('right'); if (inp.value) wrong++; }
+  });
+  var right = document.querySelectorAll('#grid input.right').length;
+  document.getElementById('msg').textContent = right === total ? '🎉 You solved it, superstar!' : right + ' of ' + total + ' letters right so far. Keep going!';
+}
+function reveal(){
+  eachInput(function(inp){ inp.value = sol[inp.getAttribute('data-k')]; inp.classList.add('right'); });
+  document.getElementById('msg').textContent = 'All revealed. It still counts as sparkle practice ✨';
+}
+buildBtns(); load(2);
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music & Bands — KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; text-align:left; }
+  .card h2 { margin-top:0; color:#8a2be2; text-align:center; }
+  .chip { display:inline-block; background:#ffe4f2; border-radius:999px; padding:4px 12px; margin:3px; font-size:14px; }
+  .gold { background:#ffd76a; color:#4a234a; font-weight:bold; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .reader { white-space:pre-wrap; text-align:left; font-size:17px; line-height:1.55; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; text-align:center; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; transform:scale(1.02); }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>🎵 Music &amp; Bands 🎵</h1>
+  <img src="icon-blend.webp" alt="The blend-all icon" style="width:92px;border-radius:22px;margin:6px auto 2px;display:block;">
+  <p class="tag">Space Viewing Room No. 2 — all of Kiki's bands, one home</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a card to put it in the spotlight, filter by kind, or let the room surprise you.</p>
+    <div id="tapFilters"></div>
+    <p><button class="pick" id="tapSurprise" type="button">🎲 Surprise me</button></p>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card">
+    <h2>🎤 The Midnight Charms</h2>
+    <p style="text-align:center"><em>Her original boy band — Boss Christina manages</em></p>
+    <p style="text-align:center">Liam · Theo · Kai · Rex · Finn · Boss Christina</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-09-19 · Debut single: No Limits Just Fun</span></p>
+  </div>
+  <div class="card">
+    <h2>🌟 The Starlight Mix</h2>
+    <p style="text-align:center"><em>Mixed-vibe band, collab partners of the Midnight Charms</em></p>
+    <p style="text-align:center">Stella · Jax · Nova · Zara · Melody</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🍬 The Sugar Sparks</h2>
+    <p style="text-align:center"><em>All-girl pop group</em></p>
+    <p style="text-align:center">Candy · Blossom · Volt · Luna</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>⚡ The Neon Rebels</h2>
+    <p style="text-align:center"><em>Edgy alt-rock band</em></p>
+    <p style="text-align:center">Blaze · Thunder · Echo · Pixel</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🎉 The Mega Mix</h2>
+    <p style="text-align:center"><em>18-member supergroup — the four bands above combined</em></p>
+    <p style="text-align:center">The Midnight Charms + Starlight Mix + Sugar Sparks + Neon Rebels</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🌊 The Tidepool Harmony</h2>
+    <p style="text-align:center"><em>Dreamy indie-folk band</em></p>
+    <p style="text-align:center">Pearl · Coral · Drift · Shore</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>👾 The Glitch Squad</h2>
+    <p style="text-align:center"><em>Hyperpop / electronic crew</em></p>
+    <p style="text-align:center">Byte · Pixel · Joystick · Cloud</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🎺 The Brass Bloom</h2>
+    <p style="text-align:center"><em>Jazz-pop big band</em></p>
+    <p style="text-align:center">Sunny · Blue · Keys · Snap · Velvet</p>
+    <p style="text-align:center"><span class="chip gold">Created 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🎻 The Velvet Strings</h2>
+    <p style="text-align:center"><em>String quartet band</em></p>
+    <p style="text-align:center">Aria · Harmony · Viola · Cello</p>
+    <p style="text-align:center"><span class="chip gold">Approved 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>🥁 The Beat Brigade</h2>
+    <p style="text-align:center"><em>Rhythm band</em></p>
+    <p style="text-align:center">Boom · Rhythm · Tick · Chime · Crash</p>
+    <p style="text-align:center"><span class="chip gold">Approved 2026-10-08</span></p>
+  </div>
+  <div class="card">
+    <h2>💿 No Limits Records</h2>
+    <p style="text-align:center">Kiki's own record label — the Midnight Charms' label, run her way: no contracts, everyone gets a studio, and the boss is THE FUN MANAGER.</p>
+  </div>
+  <div class="card">
+    <h2>🚪 About this room</h2>
+    <p>The public viewing copy of Kiki's <strong>Music &amp; Bands</strong> Space. The Space itself lives in her Muse app. Private stuff stays private, always.</p>
+  </div>
+
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+
+<script>
+(function(){
+  var KIND_OF = function(c){
+    var t = c.textContent;
+    if (t.indexOf('No Limits Records') > -1) return 'Her label';
+    if (t.indexOf('boy band') > -1) return 'Boy band';
+    if (t.indexOf('Mixed-vibe') > -1) return 'Mixed vibes';
+    if (t.indexOf('All-girl') > -1) return 'Girl group';
+    if (t.indexOf('alt-rock') > -1) return 'Alt-rock';
+    if (t.indexOf('supergroup') > -1) return 'Supergroup';
+    if (t.indexOf('indie-folk') > -1) return 'Indie-folk';
+    if (t.indexOf('Hyperpop') > -1) return 'Hyperpop';
+    if (t.indexOf('Jazz-pop') > -1) return 'Jazz-pop';
+    if (t.indexOf('String quartet') > -1) return 'Strings';
+    if (t.indexOf('Rhythm band') > -1) return 'Rhythm';
+    return 'Bands';
+  };
+  var SPOT = '🎤 On stage now: ';
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  cards = cards.filter(function(c){ return !c.querySelector('h2') || c.querySelector('h2').textContent.indexOf('About this room') === -1; });
+  var kinds = [];
+  cards.forEach(function(c){ c.setAttribute('data-k', KIND_OF(c)); if (kinds.indexOf(c.getAttribute('data-k')) === -1) kinds.push(c.getAttribute('data-k')); });
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var current = 'All';
+  function mkBtn(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(){ current = label; refresh(); };
+    bar.appendChild(b);
+  }
+  mkBtn('All'); kinds.forEach(mkBtn);
+  document.getElementById('tapSurprise').onclick = function(){
+    var vis = cards.filter(function(c){ return c.style.display !== 'none'; });
+    if (!vis.length) return;
+    spot(vis[Math.floor(Math.random() * vis.length)], true);
+  };
+  function spot(card, scroll){
+    cards.forEach(function(c){ c.classList.remove('spot'); });
+    if (card) {
+      card.classList.add('spot');
+      var h = card.querySelector('h2');
+      status.textContent = SPOT + (h ? h.textContent : '');
+      if (scroll) card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){
+      if (c.classList.contains('spot')) { c.classList.remove('spot'); status.textContent = ''; }
+      else spot(c, false);
+    });
+  });
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length;
+    status.textContent = current === 'All' ? '' : 'Showing: ' + current;
+  }
+  refresh();
+})();
+</script>
+</body>
+</html>

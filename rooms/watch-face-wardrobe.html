@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watch Face Wardrobe · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .chip { display:inline-block; background:#ffe4f2; border-radius:999px; padding:4px 12px; margin:3px; font-size:14px; }
+  .gold { background:#ffd76a; color:#4a234a; font-weight:bold; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; transform:scale(1.02); }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+  .wantbtn { font-family:inherit; font-size:15px; cursor:pointer; border:3px solid #b8860b; background:#fff; color:#4a234a; border-radius:999px; padding:7px 14px; margin-top:8px; }
+  .wantbtn.on { background:#ffd76a; }
+  .readerbox { white-space:pre-wrap; text-align:left; font-size:17px; line-height:1.55; }
+  .sparklebit { position:absolute; color:#ffd76a; font-size:22px; pointer-events:none; animation:rise 1s ease-out forwards; }
+  @keyframes rise { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-46px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>⌚ Watch Face Wardrobe</h1>
+  <p class="tag">Space Viewing Room No. 7 · Facer release catalog for the Watch 9, browse only</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a card to put it in the spotlight, filter by kind, or let the room surprise you.</p>
+    <div id="tapFilters"></div>
+    <p><button class="pick" id="tapSurprise" type="button">🎲 Surprise me</button></p>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card">
+    <h2>✨ The Nov 11 Release Catalog</h2>
+    <p>22 fresh Facer releases filed in the wardrobe to browse. Releases, not owned faces; nothing purchased.</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#f5f0e6;color:#1c1c1c;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Snoopy 626 full info AOD</h2>
+    <p><span class="chip gold">Plush &amp; character</span> <span class="chip">Facer release</span></p>
+    <p>by kato1090 · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#2e3b2a;color:#e8e4d0;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Veterans Army Watch Face</h2>
+    <p><span class="chip gold">Classic</span> <span class="chip">Facer release</span></p>
+    <p>by CULTURXP · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#7a2e4d;color:#fdf3ec;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Midway Boogie 3</h2>
+    <p><span class="chip gold">Other</span> <span class="chip">Facer release</span></p>
+    <p>by Merge Labs · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#22301f;color:#e6f2d8;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Ranger 11526</h2>
+    <p><span class="chip gold">Sporty</span> <span class="chip">Facer release</span></p>
+    <p>by Generator Studios · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#3b1d33;color:#fdf3ec;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>CN4985</h2>
+    <p><span class="chip gold">Cute &amp; sparkly</span> <span class="chip">Facer release</span></p>
+    <p>by Nancy · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#ffd7e8;color:#5b2140;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>CN4986</h2>
+    <p><span class="chip gold">Cute &amp; sparkly</span> <span class="chip">Facer release</span></p>
+    <p>by Nancy · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#4a2440;color:#ffeef6;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>CN4987</h2>
+    <p><span class="chip gold">Cute &amp; sparkly</span> <span class="chip">Facer release</span></p>
+    <p>by Nancy · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#101820;color:#d7f0ff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MAC2069H-BEARING PRO+ (WFF)</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by Manuel · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#141c2e;color:#f5eeda;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MAC2070D-TWINCORE+ (WFF)</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by Manuel · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#1b1035;color:#e9e4ff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MAC2068D-NEBULINK+ (WFF)</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by Manuel · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#0f2e2a;color:#eafff8;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MAC2067H-VITALEDGE+ (WFF)</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by Manuel · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#1c1c22;color:#ffffff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MDS473+</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by MDS Watch Faces · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#20242c;color:#eef2f7;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>EDS 014 wff</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by Enkei Design · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#0d1b2e;color:#eaf6ff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>JN - Kinetic</h2>
+    <p><span class="chip gold">Sporty</span> <span class="chip">Facer release</span></p>
+    <p>by JN - WatchFaces · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#2b2118;color:#fbeecb;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Golden Storm</h2>
+    <p><span class="chip gold">Glitter &amp; glam</span> <span class="chip">Facer release</span></p>
+    <p>by Barcelona Watches · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#101010;color:#ffffff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>SABROIX</h2>
+    <p><span class="chip gold">Minimal</span> <span class="chip">Facer release</span></p>
+    <p>by BRAZEN · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#1a1a2e;color:#f2ecd9;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>B# | Boss 17</h2>
+    <p><span class="chip gold">Classic</span> <span class="chip">Facer release</span></p>
+    <p>by B Sharp Watches · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#0a0a0a;color:#ffffff;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Black Tie X</h2>
+    <p><span class="chip gold">Classic</span> <span class="chip">Facer release</span></p>
+    <p>by WhiteT · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#233044;color:#f4f7fb;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>HS</h2>
+    <p><span class="chip gold">Minimal</span> <span class="chip">Facer release</span></p>
+    <p>by Hélder Sousa · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#241a12;color:#fdf3ec;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MDS441+</h2>
+    <p><span class="chip gold">Digital &amp; info</span> <span class="chip">Facer release</span></p>
+    <p>by MDS Watch Faces · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#2e2a24;color:#f5efe0;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>MTA02</h2>
+    <p><span class="chip gold">Classic</span> <span class="chip">Facer release</span></p>
+    <p>by Dominus Mathias · a release to browse, not owned</p>
+  </div>
+  <div class="card">
+    <p><span style="display:inline-block;width:64px;height:64px;border-radius:50%;background:#7f1d1d;color:#fff7ed;line-height:64px;font-size:22px;border:3px solid #b8860b;">⌚</span></p>
+    <h2>Santa in a Vespa 2</h2>
+    <p><span class="chip gold">Seasonal</span> <span class="chip">Facer release</span></p>
+    <p>by Wish Watches · a release to browse, not owned</p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+<script>
+(function(){
+  var KIND_OF = function(c){
+    var chips = c.querySelectorAll('.chip.gold');
+    for (var i = 0; i < chips.length; i++) { var t = chips[i].textContent.replace('★','').trim(); if (t) return t; }
+    return 'More';
+  };
+  var SPOTFN = function(c){ var h = c.querySelector('h2'); return '⌚ On the wrist spotlight: ' + (h ? h.textContent : '') + ' (browse only — not owned)'; };
+  var EXTRA = function(cards, status){
+    cards.forEach(function(c){
+      if (c.textContent.indexOf('Facer release') === -1) return;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'wantbtn'; b.textContent = '⭐ Want it';
+      b.onclick = function(ev){
+        ev.stopPropagation();
+        var on = b.classList.toggle('on');
+        b.textContent = on ? '⭐ On the want list!' : '⭐ Want it';
+        var h = c.querySelector('h2');
+        status.textContent = on ? ('⭐ ' + (h ? h.textContent : 'That face') + ' is on your want list — browse only, nothing bought.') : '';
+      };
+      c.appendChild(b);
+    });
+  };
+  var all = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var cards = [];
+  all.forEach(function(c){
+    if (c.querySelector('h2') && c.querySelector('h2').textContent.indexOf('About this room') > -1) return;
+    var k = KIND_OF(c);
+    if (k === 'STATIC') return;
+    c.setAttribute('data-k', k);
+    cards.push(c);
+  });
+  var kinds = [];
+  cards.forEach(function(c){ if (kinds.indexOf(c.getAttribute('data-k')) === -1) kinds.push(c.getAttribute('data-k')); });
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var current = 'All';
+  function mkBtn(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(ev){ ev.stopPropagation(); current = label; refresh(); };
+    bar.appendChild(b);
+  }
+  mkBtn('All'); kinds.forEach(mkBtn);
+  var surp = document.getElementById('tapSurprise');
+  if (surp) surp.onclick = function(){
+    var vis = cards.filter(function(c){ return c.style.display !== 'none'; });
+    if (vis.length) spot(vis[Math.floor(Math.random() * vis.length)], true);
+  };
+  function spot(card, scroll){
+    cards.forEach(function(c){ c.classList.remove('spot'); });
+    if (card) {
+      card.classList.add('spot');
+      status.textContent = SPOTFN(card);
+      if (scroll) card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){
+      if (c.classList.contains('spot')) { c.classList.remove('spot'); status.textContent = ''; }
+      else spot(c, false);
+    });
+  });
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length;
+    status.textContent = current === 'All' ? '' : 'Showing: ' + current;
+  }
+  if (EXTRA) EXTRA(cards, status);
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KikiVerse — The Reading Shelf</title>
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:720px; margin:0 auto; padding:48px 20px 64px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:38px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 28px; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:24px 22px; margin:18px 0; text-align:left; }
+  .card h2 { margin-top:0; color:#8a2be2; text-align:center; }
+  .when { text-align:center; color:#8a6d1d; font-style:italic; margin-top:-8px; }
+  .hook { font-style:italic; color:#8a2be2; }
+  .tags { color:#8a6d1d; font-size:14px; }
+  a { color:#ffd76a; }
+  .home { display:inline-block; margin-top:10px; background:#4a234a; padding:10px 16px; border-radius:999px; text-decoration:none; }
+  footer { margin-top:36px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+  .readerbox { white-space:pre-wrap; text-align:left; font-size:17px; line-height:1.55; }
+  .sparklebit { position:absolute; color:#ffd76a; font-size:24px; pointer-events:none; animation:rise 1s ease-out forwards; }
+  @keyframes rise { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-52px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>📚 The Reading Shelf</h1>
+  <p class="tag">Kiki's public pieces, gathered to read — newest first</p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a piece to open it in the reader, and filter the shelf by day.</p>
+    <div id="tapFilters"></div>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+  <div class="card" id="readerCard" style="display:none">
+    <h2 id="readerTitle">📖 Reader</h2>
+    <div class="readerbox" id="readerBox"></div>
+  </div>
+
+
+  <div class="card">
+    <h2>A Day in Kiki's World</h2>
+    <p class="when">Thursday, November 12, 2026 · 11:00 AM version</p>
+    <p class="hook">Come spend a soft magical day with me.</p>
+    <p>Morning tea, one intention, a tidy altar, a walk with no playlist, and a letter to future Kiki. Ordinary days are spells too when you choose them with love.</p>
+    <p class="tags">#KikisWorld #DayInMyLife #MagicalRoutine #SoftMagic #KikiLore</p>
+  </div>
+
+  <div class="card">
+    <h2>A Day in Kiki's World</h2>
+    <p class="when">Thursday, November 12, 2026 · 9:00 AM version</p>
+    <p class="hook">Come spend a soft, slow day with me.</p>
+    <p>Morning tea, Reiki, journaling, a walk without my phone. Five story slides that feel like a deep exhale.</p>
+    <p class="tags">#DayInMyLife #KikisWorld #SlowLiving #HealingJourney #MorningRitual #SelfCareDay #ReikiLife #CozyVibes #MindfulLiving #SpiritualJourney #SoftLife #DailyRituals #HealingSpace #GentleLiving #MagicInTheEveryday</p>
+  </div>
+
+  <div class="card">
+    <h2>11/11 Portal Ritual</h2>
+    <p class="when">Wednesday, November 11, 2026 · 11:00 AM version</p>
+    <p><strong>Make a wish the fandom way — soft, brave, and true.</strong></p>
+    <p>Today the fandom feels a little more magical, doesn’t it? On 11/11, we are not wishing for perfection. We are wishing for the life that feels like home. Close your eyes and think of the version of you who feels safe, loved, and brave enough to want big things. What song is playing in her life? Who is beside her? What did she finally let herself believe? Write one wish — just one — the way you would say it to your bias if you knew he would listen with his whole heart. Then write the brave step you will take for it this week. Not ten steps. One. Your comfort era and your becoming era can live in the same heart. You can miss the past and still build a beautiful future. You can love the music and still love the person you are becoming. So make the wish. Light the candle. Take the step. The portal is not just in the sky. It is in you.</p>
+    <p>Comment your 11/11 wish in one line — or just drop ✨ if you are keeping it close to your heart.</p>
+    <p class="tags">#OneDirectionReiki #1111Portal #1DHealing #ManifestWithMusic #DirectionerHealing #ComfortHealing #FanHealing #Manifestation #1111Wish #OneDirection #Directioner #HealingEnergy #NewEra #MakeAWish #KikisWorld</p>
+  </div>
+
+  <div class="card">
+    <h2>11:11 Manifestation Ritual</h2>
+    <p class="when">Wednesday, November 11, 2026 · 9:00 AM version</p>
+    <p>11:11 is not a coincidence. It is an invitation to remember what you want.</p>
+    <p>At 11:11, the world gets quieter and your heart gets louder. This is your portal moment. Here is my five-minute ritual: First, put your phone down and place both hands on your heart. Second, whisper one wish out loud — not I want, but I am grateful that. Third, close your eyes and feel it as already done. See yourself living it. Hear the sounds. Feel the relief, the joy, the peace. Fourth, write it down in present tense, then write thank you underneath. Fifth, release it. Do not chase it. Trust it. The universe does not need you to beg. She needs you to believe. You are not manifesting from lack. You are remembering what is already on its way to you. Set your alarm for 11:11, do this ritual with me, and watch what shifts in the next eleven days. Your dreams are not too big. Your timing is not too late. You are exactly on time.</p>
+    <p>Drop your 11:11 wish in one word below — mine is PEACE. What is yours?</p>
+    <p class="tags">#1111 #Manifestation #ManifestYourDreams #1111Portal #LawOfAttraction #KikisWorld #AbundanceMindset #Manifesting #SpiritualAwakening #AngelNumbers #DreamBig #PositiveEnergy #IntentionSetting #Magic #NewBeginnings #Abundance #Gratitude #Manifest #SpiritualGrowth #Portal</p>
+  </div>
+
+  <p><a class="home" href="index.html">👑 Back to KikiVerse</a></p>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq · Built with love, one piece at a time</footer>
+</div>
+
+<script>
+(function(){
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card')).filter(function(c){ return c.id !== 'readerCard'; });
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var rc = document.getElementById('readerCard');
+  var rt = document.getElementById('readerTitle');
+  var rb = document.getElementById('readerBox');
+  function kindOf(c){
+    var w = c.querySelector('.when');
+    var t = w ? w.textContent : '';
+    if (t.indexOf('November 12') > -1) return 'Nov 12 pieces';
+    if (t.indexOf('November 11') > -1) return 'Nov 11 pieces';
+    return 'More pieces';
+  }
+  var kinds = [];
+  cards.forEach(function(c){ c.setAttribute('data-k', kindOf(c)); if (kinds.indexOf(c.getAttribute('data-k')) === -1) kinds.push(c.getAttribute('data-k')); });
+  var current = 'All';
+  function mkBtn(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(){ current = label; refresh(); };
+    bar.appendChild(b);
+  }
+  mkBtn('All'); kinds.forEach(mkBtn);
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length + ' pieces';
+  }
+  cards.forEach(function(c){
+    c.style.cursor = 'pointer';
+    c.addEventListener('click', function(){
+      cards.forEach(function(x){ x.classList.remove('spot'); });
+      c.classList.add('spot');
+      var h = c.querySelector('h2');
+      rt.textContent = '📖 ' + (h ? h.textContent : 'Piece');
+      var parts = [];
+      c.querySelectorAll('p').forEach(function(p){ if (!p.classList.contains('tags')) parts.push(p.textContent); });
+      rb.textContent = parts.join('\n\n');
+      rc.style.display = '';
+      if (!c.querySelector('.readmark')) {
+        var m = document.createElement('p');
+        m.className = 'readmark';
+        m.innerHTML = '<strong>✓ Opened in the reader</strong>';
+        c.appendChild(m);
+      }
+      status.textContent = '📖 Now reading: ' + (h ? h.textContent : '');
+      rc.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Ideas · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .chip { display:inline-block; background:#ffe4f2; border-radius:999px; padding:4px 12px; margin:3px; font-size:14px; }
+  .gold { background:#ffd76a; color:#4a234a; font-weight:bold; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+
+  .toilet { display:inline-block; animation: swirl 2.4s ease-in-out infinite; }
+  @keyframes swirl { 0% { transform: rotate(0deg) translateY(0); } 25% { transform: rotate(8deg) translateY(-4px); } 50% { transform: rotate(0deg) translateY(0); } 75% { transform: rotate(-8deg) translateY(-4px); } 100% { transform: rotate(0deg) translateY(0); } }
+
+  @keyframes flushspin { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(0.7); } 100% { transform: rotate(360deg) scale(1); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>💡 Your Ideas</h1>
+  <p class="tag">Space Viewing Room No. 5 · the Idea River shelf, hosted by Sprout in Muse</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="card">
+    <h2>🌱 How ideas grow here</h2>
+    <p>Every idea travels the River: <strong>Sprout → Queued → Building → Bloomed (LIVE)</strong>. These are Kiki's newest, all Queued and ready for the build train.</p>
+    <p>Got an idea FOR Kiki? The Idea Drop lives in her Ideas Space. Drop yours through her TikTok or Telegram (links on the home page) and Sprout files it for her yes.</p>
+  </div>
+  <div class="card">
+    <h2><span id="bigsink" style="display:inline-block;">🚰</span> The Idea Sink</h2>
+    <p>Every idea bathroom needs a sink. No flush button here: just tap the sink and the sparkle water runs, rinsing one of Kiki's ideas shiny ✨</p>
+    <p><button onclick="doRinse()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🚰 Tap the Sink</button></p>
+    <p id="water" style="display:none;font-size:26px;letter-spacing:8px;">💧💧💧💧💧</p>
+    <p id="rinsed" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2><span style="display:inline-block;">🚿</span> The Idea Shower</h2>
+    <p>The brainSTORM. Tap the shower, the rain falls, and three of Kiki's ideas sprinkle down at once 🌧️✨</p>
+    <p><button onclick="doShower()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🚿 Tap the Shower</button></p>
+    <p id="rain" style="display:none;font-size:24px;letter-spacing:6px;">💧💧💧💧💧💧💧<br>💧💧💧💧💧💧💧</p>
+    <p id="stormed" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2><span style="display:inline-block;">🪞</span> The Idea Mirror</h2>
+    <p>Tap the mirror and see the Idea Queen herself, plus one of her ideas checking itself out.</p>
+    <p><button onclick="doMirror()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🪞 Tap the Mirror</button></p>
+    <p id="mirrored" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2><span id="bigduck" style="display:inline-block;">🦆</span> The Idea Rubber Duck</h2>
+    <p>Every builder needs a rubber duck. Tap it, it squeaks, and it shows you an idea to think about.</p>
+    <p><button onclick="doDuck()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🦆 Squeak the Duck</button></p>
+    <p id="ducked" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2><span style="display:inline-block;">🛁</span> The Idea Bathtub</h2>
+    <p>Some ideas need a long soak. Tap the bathtub, the bubbles rise, and one idea settles in for a soak.</p>
+    <p><button onclick="doTub()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🛁 Run the Bath</button></p>
+    <p id="bubbles" style="display:none;font-size:24px;letter-spacing:6px;">🫧🫧🫧🫧🫧🫧</p>
+    <p id="soaked" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2>Mario&#x27;s Morning Power-Up Hello Tour</h2>
+    <p><span class="chip gold">IDEA</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+    <div class="card">
+    <h2><span class="toilet" id="bigtoilet">🚽</span> The Giant Idea Toilet</h2>
+    <p>Everything Kiki and her crew make swirls in here like a giant idea toilet. Nothing gets lost: it all flushes into a Space, where Sprout makes it grow 🌱</p>
+    <p><button onclick="doFlush()" style="background:#ffd76a;color:#4a234a;border:3px solid #b8860b;border-radius:999px;padding:14px 34px;font-size:22px;font-family:Georgia,serif;font-weight:bold;cursor:pointer;">🚽 FLUSH! 🌀</button></p>
+    <p id="flushed" style="display:none;background:#ffe4f2;border-radius:12px;padding:12px;"></p>
+  </div>
+  <div class="card">
+    <h2>SparkleCorp Sunrise Sparkle-Lab Story Trail</h2>
+    <p><span class="chip gold">STORY</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>The Moffatts Morning Harmony Playlist Spinner</h2>
+    <p><span class="chip gold">MUSIC</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Kiki&#x27;s App Pantry Morning Breakfast-Sparkle Window</h2>
+    <p><span class="chip gold">IDEA</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Earnings Board Morning Jar-Count Cheer</h2>
+    <p><span class="chip gold">IDEA</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Gem Lantern Light-Up Path</h2>
+    <p><span class="chip gold">GAME</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Star Gem Constellation Connect</h2>
+    <p><span class="chip gold">GAME</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Gem Fossil Brush Reveal</h2>
+    <p><span class="chip gold">GAME</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Gem Balloon Float Party</h2>
+    <p><span class="chip gold">GAME</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Crown Jewel Pattern Pop</h2>
+    <p><span class="chip gold">GAME</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Celebration Card Reminder Keeper</h2>
+    <p><span class="chip gold">SOFTWARE</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Everything Store New Arrival and App Orchard Shelf Keeper</h2>
+    <p><span class="chip gold">SOFTWARE</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <div class="card">
+    <h2>Gentle Move Break Card Deck</h2>
+    <p><span class="chip gold">SOFTWARE</span> <span class="chip">Stage: Queued</span> <span class="chip">Nov 12, 2026</span></p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+<script>
+var FLUSH_IDEAS = ["Mario's Morning Power-Up Hello Tour","SparkleCorp Sunrise Sparkle-Lab Story Trail","The Moffatts Morning Harmony Playlist Spinner","Kiki's App Pantry Morning Breakfast-Sparkle Window","Earnings Board Morning Jar-Count Cheer","Gem Lantern Light-Up Path","Star Gem Constellation Connect","Gem Fossil Brush Reveal","Gem Balloon Float Party","Crown Jewel Pattern Pop","Celebration Card Reminder Keeper","Everything Store New Arrival and App Orchard Shelf Keeper","Gentle Move Break Card Deck"];
+var lastFlush = -1, flushAudio = null;
+function whoosh(){
+  try {
+    if (!flushAudio) flushAudio = new (window.AudioContext || window.webkitAudioContext)();
+    var ctx = flushAudio, t = ctx.currentTime;
+    var dur = 1.3, buf = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    var src = ctx.createBufferSource(); src.buffer = buf;
+    var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.8;
+    bp.frequency.setValueAtTime(1400, t); bp.frequency.exponentialRampToValueAtTime(220, t + dur);
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900;
+    var g = ctx.createGain();
+    g.gain.setValueAtTime(0.001, t); g.gain.exponentialRampToValueAtTime(0.5, t + 0.15); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    src.connect(bp); bp.connect(lp); lp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + dur);
+  } catch (e) {}
+}
+function doFlush(){
+  whoosh();
+  var t = document.getElementById('bigtoilet');
+  t.style.animation = 'none'; void t.offsetWidth; t.style.animation = 'flushspin 0.9s ease-in-out';
+  var i;
+  do { i = Math.floor(Math.random() * FLUSH_IDEAS.length); } while (i === lastFlush && FLUSH_IDEAS.length > 1);
+  lastFlush = i;
+  var panel = document.getElementById('flushed');
+  panel.style.display = 'block';
+  panel.innerHTML = '🌀 Flushed into its Space: <strong>' + FLUSH_IDEAS[i] + '</strong>';
+}
+</script>
+
+<script>
+var lastRinse = -1, rinseAudio = null;
+function waterSound(){
+  try {
+    if (!rinseAudio) rinseAudio = new (window.AudioContext || window.webkitAudioContext)();
+    var ctx = rinseAudio, t = ctx.currentTime, dur = 2;
+    var buf = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    var src = ctx.createBufferSource(); src.buffer = buf;
+    var hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1200;
+    var g = ctx.createGain();
+    g.gain.setValueAtTime(0.001, t); g.gain.exponentialRampToValueAtTime(0.18, t + 0.2); g.gain.setValueAtTime(0.18, t + dur - 0.4); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    src.connect(hp); hp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + dur);
+  } catch (e) {}
+}
+function doRinse(){
+  waterSound();
+  var w = document.getElementById('water');
+  w.style.display = 'block';
+  var i;
+  do { i = Math.floor(Math.random() * FLUSH_IDEAS.length); } while (i === lastRinse && FLUSH_IDEAS.length > 1);
+  lastRinse = i;
+  setTimeout(function(){
+    w.style.display = 'none';
+    var panel = document.getElementById('rinsed');
+    panel.style.display = 'block';
+    panel.innerHTML = '✨ Rinsed and shiny: <strong>' + FLUSH_IDEAS[i] + '</strong>';
+  }, 2000);
+}
+</script>
+
+<script>
+var lastTrio = [];
+function rainSound(){
+  try {
+    var ctx = rinseAudio || flushAudio;
+    if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); rinseAudio = ctx; }
+    var t = ctx.currentTime, dur = 2.5;
+    var buf = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    var src = ctx.createBufferSource(); src.buffer = buf;
+    var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1800; bp.Q.value = 0.4;
+    var g = ctx.createGain();
+    g.gain.setValueAtTime(0.001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.3); g.gain.setValueAtTime(0.16, t + dur - 0.5); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    src.connect(bp); bp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + dur);
+  } catch (e) {}
+}
+function doShower(){
+  rainSound();
+  var r = document.getElementById('rain');
+  r.style.display = 'block';
+  var picks = [], guard = 0;
+  while (picks.length < 3 && guard < 60) {
+    guard++;
+    var i = Math.floor(Math.random() * FLUSH_IDEAS.length);
+    if (picks.indexOf(i) === -1 && lastTrio.indexOf(i) === -1) picks.push(i);
+  }
+  while (picks.length < 3) { var j = Math.floor(Math.random() * FLUSH_IDEAS.length); if (picks.indexOf(j) === -1) picks.push(j); }
+  lastTrio = picks;
+  setTimeout(function(){
+    r.style.display = 'none';
+    var panel = document.getElementById('stormed');
+    panel.style.display = 'block';
+    panel.innerHTML = '🌧️ <strong>Brainstorm trio:</strong><br>✨ ' + FLUSH_IDEAS[picks[0]] + '<br>✨ ' + FLUSH_IDEAS[picks[1]] + '<br>✨ ' + FLUSH_IDEAS[picks[2]];
+  }, 2500);
+}
+</script>
+
+<script>
+var lastMirror = -1, lastDuck = -1, lastSoak = -1, duckAudio = null;
+function anyCtx(){
+  if (duckAudio) return duckAudio;
+  if (window.rinseAudio) { duckAudio = rinseAudio; return duckAudio; }
+  if (window.flushAudio) { duckAudio = flushAudio; return duckAudio; }
+  duckAudio = new (window.AudioContext || window.webkitAudioContext)();
+  return duckAudio;
+}
+function pickDiff(last){
+  var i;
+  do { i = Math.floor(Math.random() * FLUSH_IDEAS.length); } while (i === last && FLUSH_IDEAS.length > 1);
+  return i;
+}
+function doMirror(){
+  var i = pickDiff(lastMirror); lastMirror = i;
+  var panel = document.getElementById('mirrored');
+  panel.style.display = 'block';
+  panel.innerHTML = '👑 <strong>The Idea Queen herself</strong> ✨<br>And checking itself out in the mirror: <strong>' + FLUSH_IDEAS[i] + '</strong>';
+}
+function squeak(){
+  try {
+    var ctx = anyCtx(), t = ctx.currentTime;
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1200, t + 0.08); o.frequency.exponentialRampToValueAtTime(500, t + 0.2);
+    g.gain.setValueAtTime(0.001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.04); g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.25);
+  } catch (e) {}
+}
+function doDuck(){
+  squeak();
+  var dk = document.getElementById('bigduck');
+  dk.style.animation = 'none'; void dk.offsetWidth; dk.style.animation = 'flushspin 0.5s ease-in-out';
+  var i = pickDiff(lastDuck); lastDuck = i;
+  var panel = document.getElementById('ducked');
+  panel.style.display = 'block';
+  panel.innerHTML = '🦆 <strong>Squeak!</strong> The duck wants you to think about: <strong>' + FLUSH_IDEAS[i] + '</strong>';
+}
+function tubSound(){
+  try {
+    var ctx = anyCtx(), t = ctx.currentTime, dur = 3;
+    var buf = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    var src = ctx.createBufferSource(); src.buffer = buf;
+    var lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500;
+    var g = ctx.createGain();
+    g.gain.setValueAtTime(0.001, t); g.gain.exponentialRampToValueAtTime(0.3, t + 0.3); g.gain.setValueAtTime(0.3, t + dur - 0.5); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+    src.connect(lp); lp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + dur);
+  } catch (e) {}
+}
+function doTub(){
+  tubSound();
+  var b = document.getElementById('bubbles');
+  b.style.display = 'block';
+  var i = pickDiff(lastSoak); lastSoak = i;
+  setTimeout(function(){
+    b.style.display = 'none';
+    var panel = document.getElementById('soaked');
+    panel.style.display = 'block';
+    panel.innerHTML = '🛁 Now soaking: <strong>' + FLUSH_IDEAS[i] + '</strong> 🫧 Some ideas just need a long soak.';
+  }, 3000);
+}
+</script>
+</body>
+</html>

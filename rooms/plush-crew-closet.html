@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plush Crew Closet — KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:38px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .crew { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:18px 0 6px; }
+  .crew button, .nav button, .comedybtn {
+    font-family:inherit; font-size:17px; cursor:pointer; border:3px solid #b8860b;
+    background:#4a234a; color:#fdf6ff; border-radius:999px; padding:10px 16px;
+  }
+  .crew button.active { background:#ffb7dd; color:#4a234a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:24px 22px; margin:18px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .big { font-size:64px; line-height:1.1; }
+  .outfitname { font-size:26px; font-weight:bold; color:#b8860b; margin:6px 0; }
+  .pieces { font-size:18px; margin:8px 0 16px; }
+  .today { display:inline-block; background:#ffe4f2; border-radius:999px; padding:5px 14px; font-size:14px; margin-bottom:10px; }
+  .count { color:#8a2be2; font-size:15px; }
+  .comedylist { text-align:left; max-width:520px; margin:12px auto 0; }
+  .comedylist li { margin:8px 0; }
+  .hidden { display:none; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>🧸 Plush Crew Closet 👕</h1>
+  <img src="icon-crowned.webp" alt="Kiki's World crowned icon" style="width:92px;border-radius:22px;margin:6px auto 2px;display:block;">
+  <p class="tag">Space Viewing Room No. 1 — tap a crew member, flip through their outfits!</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+
+  <div class="crew" id="crewButtons"></div>
+
+  <div class="card">
+    <div class="big" id="memberEmoji">🐼</div>
+    <h2 id="memberName">Angel Panda</h2>
+    <div><span class="today" id="todayBadge">⭐ Today's look</span></div>
+    <div class="outfitname" id="outfitName"></div>
+    <p class="pieces" id="outfitPieces"></p>
+    <p class="count" id="outfitCount"></p>
+    <div class="nav">
+      <button id="prevBtn" type="button">⬅️ Previous outfit</button>
+      <button id="nextBtn" type="button">Next outfit ➡️</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>😂 The Comedy Shelf</h2>
+    <p>The crew's silly outfits live here, kept for comedy bits only.</p>
+    <button class="comedybtn" id="comedyBtn" type="button">Show the comedy outfits</button>
+    <ul class="comedylist hidden" id="comedyList"></ul>
+  </div>
+
+  <div class="card">
+    <h2>🚪 About this room</h2>
+    <p>This is the public viewing copy of Kiki's <strong>Plush Crew Closet</strong> Space.
+    The Space itself lives in her Muse app — this room shows its public outfits so she can view them right here.
+    Private stuff stays private, always.</p>
+  </div>
+
+  <footer>© 2026 KikiVerse · onedirectionhealinghq · Plush Crew Closet — Space Viewing Room No. 1</footer>
+</div>
+
+<script>
+var MEMBERS = [
+  { name: "Angel Panda", emoji: "🐼", today: 2, outfits: [
+    { name: "Stage Star Set", pieces: "Pink guitar band tee, cuffed blue jeans, white sneakers, tiny star pin" },
+    { name: "Cozy Hoodie Day", pieces: "Cream hoodie, soft jeans, slip-on sneakers — halo shining bright" },
+    { name: "Denim Jacket Jam", pieces: "Denim jacket over a striped tee, dark jeans, high-top sneakers" },
+    { name: "Cap & Chords", pieces: "Backwards cap, music-note band tee, cargo jeans, chunky sneakers" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a band tee, work jeans, sturdy boots" }
+  ], comedy: { name: "Banana Split Surprise", pieces: "Banana costume worn over his tee — comedy bit only!" },
+     comedy2: { name: "Pajama Concert", pieces: "Star pajamas and a nightcap, hugging a pillow like a guitar — comedy bit only!" } },
+  { name: "Snuggle Bug", emoji: "🐞", today: 2, outfits: [
+    { name: "Lucky Green Hoodie", pieces: "Green hoodie, jeans, white sneakers, little shamrock pin" },
+    { name: "Acoustic Tee Time", pieces: "Guitar-print band tee, soft jeans, canvas sneakers" },
+    { name: "Denim & Dots", pieces: "Denim jacket over a plain tee, jeans, cozy boots" },
+    { name: "Cap Classic", pieces: "Flat cap, striped tee, jeans, brown boots" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a band tee, work jeans, sturdy boots" }
+  ], comedy: { name: "Potato Pal", pieces: "Squishy potato costume with a big grin — comedy bit only!" } },
+  { name: "Hazza", emoji: "😴", today: 2, outfits: [
+    { name: "Beanie Dreamer", pieces: "Sleepy beanie, oversized cardigan over a band tee, jeans, boots" },
+    { name: "Star Jacket Set", pieces: "Star-sparkle jacket, plain tee, black jeans, Chelsea boots" },
+    { name: "Rainbow Tee Day", pieces: "Rainbow band tee, light-wash jeans, white sneakers" },
+    { name: "Cozy Cap Look", pieces: "Soft cap, comfy hoodie, jeans, sneakers" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a band tee, work jeans, sturdy boots" }
+  ], comedy: { name: "Frog Hat Giggles", pieces: "Big frog hat with a polka-dot scarf — comedy bit only!" } },
+  { name: "DJ Malik", emoji: "🎧", today: 2, outfits: [
+    { name: "DJ Headphone Set", pieces: "Headphones on, leather-look jacket, graphic tee, dark jeans, boots" },
+    { name: "Turntable Tee", pieces: "Turntable-print band tee, jeans, high-top sneakers" },
+    { name: "Cool Cap Mix", pieces: "Snapback cap, hoodie, jeans, fresh sneakers" },
+    { name: "Denim Remix", pieces: "Denim jacket, plain tee, jeans, boots" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a band tee, work jeans, sturdy boots" }
+  ], comedy: { name: "Disco Ball Hat", pieces: "Tiny disco-ball hat that sparkles when he spins — comedy bit only!" } },
+  { name: "Boo Bear", emoji: "⭐", today: 2, outfits: [
+    { name: "Stripes & Mischief", pieces: "Striped band tee, cap, jeans, red sneakers" },
+    { name: "Star Tag Special", pieces: "Star-print tee, denim jacket, jeans, boots — star tag shining" },
+    { name: "Hoodie Chaos", pieces: "Bright hoodie, jeans, mismatched sneakers (on purpose!)" },
+    { name: "Skater Bear", pieces: "Checkered tee, backwards cap, jeans, skate shoes" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a band tee, work jeans, sturdy boots" }
+  ], comedy: { name: "Superhero Cape Oops", pieces: "Cape worn backwards over his tee — comedy bit only!" } },
+  { name: "Kiki (your avatar)", emoji: "👑", today: 3, outfits: [
+    { name: "Sparkle Hoodie Classic", pieces: "Pink sparkle hoodie, jeans, pink sneakers, tiny crown" },
+    { name: "Queen K Casual", pieces: "Heart tee, denim jacket, jeans, white sneakers" },
+    { name: "Cozy Crown Day", pieces: "Soft sweater, jeans, cozy boots, sparkle crown" },
+    { name: "Star Performer", pieces: "Star jacket, tee, jeans, glitter sneakers" },
+    { name: "Construction Crew Hard Hats", pieces: "Yellow hard hat, orange safety vest over a sparkle tee, jeans, sturdy boots" }
+  ], comedy: { name: "Pajama Party Host", pieces: "Star pajamas and fuzzy slippers — comedy bit only!" } }
+];
+
+var currentMember = 0;
+var currentOutfit = MEMBERS[0].today;
+
+function renderButtons() {
+  var box = document.getElementById('crewButtons');
+  box.innerHTML = '';
+  MEMBERS.forEach(function(m, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = m.emoji + ' ' + m.name;
+    if (i === currentMember) b.className = 'active';
+    b.onclick = function() { currentMember = i; currentOutfit = MEMBERS[i].today; render(); };
+    box.appendChild(b);
+  });
+}
+
+function render() {
+  var m = MEMBERS[currentMember];
+  var o = m.outfits[currentOutfit];
+  document.getElementById('memberEmoji').textContent = m.emoji;
+  document.getElementById('memberName').textContent = m.name;
+  document.getElementById('outfitName').textContent = o.name;
+  document.getElementById('outfitPieces').textContent = o.pieces;
+  document.getElementById('outfitCount').textContent = 'Outfit ' + (currentOutfit + 1) + ' of ' + m.outfits.length;
+  document.getElementById('todayBadge').style.visibility = (currentOutfit === m.today) ? 'visible' : 'hidden';
+  renderButtons();
+}
+
+document.getElementById('prevBtn').onclick = function() {
+  var m = MEMBERS[currentMember];
+  currentOutfit = (currentOutfit - 1 + m.outfits.length) % m.outfits.length;
+  render();
+};
+document.getElementById('nextBtn').onclick = function() {
+  var m = MEMBERS[currentMember];
+  currentOutfit = (currentOutfit + 1) % m.outfits.length;
+  render();
+};
+
+var comedyShown = false;
+document.getElementById('comedyBtn').onclick = function() {
+  var list = document.getElementById('comedyList');
+  comedyShown = !comedyShown;
+  if (comedyShown) {
+    list.innerHTML = '';
+    MEMBERS.forEach(function(m) {
+      var li = document.createElement('li');
+      li.textContent = m.emoji + ' ' + m.name + ' — ' + m.comedy.name + ': ' + m.comedy.pieces;
+      list.appendChild(li);
+      if (m.comedy2) {
+        var li2 = document.createElement('li');
+        li2.textContent = m.emoji + ' ' + m.name + ' — ' + m.comedy2.name + ': ' + m.comedy2.pieces;
+        list.appendChild(li2);
+      }
+    });
+    list.className = 'comedylist';
+    this.textContent = 'Hide the comedy outfits';
+  } else {
+    list.className = 'comedylist hidden';
+    this.textContent = 'Show the comedy outfits';
+  }
+};
+
+render();
+</script>
+</body>
+</html>

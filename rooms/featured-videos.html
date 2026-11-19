@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KikiVerse — Featured Videos</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:720px; margin:0 auto; padding:48px 20px 64px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:38px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 28px; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:24px 22px; margin:18px 0; text-align:left; }
+  .card h2 { margin-top:0; color:#8a2be2; text-align:center; }
+  .when { text-align:center; color:#8a6d1d; font-style:italic; margin-top:-8px; }
+  .wm { text-align:center; color:#8a6d1d; font-size:13px; letter-spacing:1px; margin-bottom:0; }
+  a { color:#ffd76a; }
+  .home { display:inline-block; margin-top:10px; background:#4a234a; padding:10px 16px; border-radius:999px; text-decoration:none; }
+  footer { margin-top:36px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+
+  .poster { aspect-ratio:16/9; border-radius:12px; background:linear-gradient(135deg,#ffb7dd,#e7d7ff 55%,#ffd76a); display:flex; align-items:center; justify-content:center; font-size:46px; margin-bottom:14px; overflow:hidden; }
+  .poster img { width:100%; height:100%; object-fit:cover; display:block; }
+  .badges { text-align:center; margin:2px 0 8px; }
+  .badge { display:inline-block; background:#ffe4f2; color:#8a2be2; border:2px solid #b8860b; border-radius:999px; padding:3px 12px; font-size:13px; margin:2px; }
+  .note { text-align:center; }
+  .embedwrap { position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#241536; margin-bottom:14px; }
+  .embedwrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+  .doorway { display:inline-block; background:#4a234a; color:#ffd76a; padding:10px 16px; border-radius:999px; text-decoration:none; }
+  .doorline { text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>🎬 Featured Videos</h1>
+  <p class="tag">Kiki's own videos — regular and animated — featured in one room. The frame lives here; each video streams from its own home.</p>
+
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a video card to open it in the spotlight, and filter the wall.</p>
+    <div id="tapFilters"></div>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card" id="spotCard" style="display:none">
+    <h2 id="spotTitle">🎬 Spotlight</h2>
+    <div id="spotEmbed"></div>
+    <p class="note" id="spotNote"></p>
+    <p class="doorline"><a class="doorway" id="spotLink" href="#" target="_blank" rel="noopener">▶ Watch at its home</a></p>
+    <p class="wm">onedirectionhealinghq</p>
+  </div>
+
+  <div id="wall"></div>
+
+  <div class="card" id="emptyCard">
+    <h2>🎬 The Wall Is Ready</h2>
+    <p class="note">No featured videos yet — and that's okay. This room is built and waiting.</p>
+    <p class="note">Featured videos land here as Kiki picks them and drops their links — her videos, and her animated ones too. If it moves, it can be featured. ✨</p>
+    <p class="note">The videos themselves keep living at their own homes — TikTok, YouTube, and Kiki's library. This wall is the frame that features them.</p>
+    <p class="wm">onedirectionhealinghq</p>
+  </div>
+
+  <p><a class="home" href="index.html">👑 Back to KikiVerse</a></p>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq · Built with love, one piece at a time</footer>
+</div>
+
+<script>
+(function(){
+  // Featured videos land here as Kiki picks them and drops their links.
+  // Entry shape:
+  // { title:"...", type:"video" | "animated",
+  //   platform:"youtube" | "tiktok" | "drive",
+  //   id:"the video id at its home", url:"link to the video's home",
+  //   poster:"poster image url (optional)", note:"a line from Kiki (optional)" }
+  var FEATURED = [];
+
+  var wall = document.getElementById('wall');
+  var emptyCard = document.getElementById('emptyCard');
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var sc = document.getElementById('spotCard');
+  var st = document.getElementById('spotTitle');
+  var se = document.getElementById('spotEmbed');
+  var sn = document.getElementById('spotNote');
+  var sl = document.getElementById('spotLink');
+
+  var cards = [];
+  FEATURED.forEach(function(v){
+    var c = document.createElement('div');
+    c.className = 'card';
+    c.setAttribute('data-k', v.type === 'animated' ? 'Animated' : 'Videos');
+    var poster = document.createElement('div');
+    poster.className = 'poster';
+    if (v.poster) {
+      var img = document.createElement('img');
+      img.src = v.poster; img.alt = v.title;
+      poster.appendChild(img);
+    } else {
+      poster.textContent = v.type === 'animated' ? '🎞️' : '🎬';
+    }
+    c.appendChild(poster);
+    var h = document.createElement('h2'); h.textContent = v.title; c.appendChild(h);
+    var badges = document.createElement('p'); badges.className = 'badges';
+    var b1 = document.createElement('span'); b1.className = 'badge';
+    b1.textContent = v.type === 'animated' ? '🎞️ Animated' : '🎬 Video';
+    var b2 = document.createElement('span'); b2.className = 'badge';
+    b2.textContent = v.platform === 'youtube' ? 'YouTube' : (v.platform === 'tiktok' ? 'TikTok' : 'Kiki\u2019s Library');
+    badges.appendChild(b1); badges.appendChild(b2); c.appendChild(badges);
+    if (v.note) { var n = document.createElement('p'); n.className = 'note'; n.textContent = v.note; c.appendChild(n); }
+    var wm = document.createElement('p'); wm.className = 'wm'; wm.textContent = 'onedirectionhealinghq'; c.appendChild(wm);
+    c.style.cursor = 'pointer';
+    c.addEventListener('click', function(){
+      cards.forEach(function(x){ x.classList.remove('spot'); });
+      c.classList.add('spot');
+      st.textContent = '🎬 ' + v.title;
+      sn.textContent = v.note || '';
+      sl.href = v.url || '#';
+      se.innerHTML = '';
+      var wrap = document.createElement('div'); wrap.className = 'embedwrap';
+      var f = document.createElement('iframe');
+      f.setAttribute('allowfullscreen', '');
+      f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      if (v.platform === 'youtube') {
+        f.src = 'https://www.youtube-nocookie.com/embed/' + v.id;
+        wrap.appendChild(f); se.appendChild(wrap);
+      } else if (v.platform === 'drive') {
+        f.src = 'https://drive.google.com/file/d/' + v.id + '/preview';
+        wrap.appendChild(f); se.appendChild(wrap);
+      } else {
+        // TikTok plays best at its own home — the spotlight becomes a doorway.
+        var p = document.createElement('p'); p.className = 'note';
+        p.style.color = '#fdf6ff'; p.style.padding = '18px 8px';
+        p.textContent = 'This one lives on TikTok — tap below to watch it at home. 💖';
+        wrap.appendChild(p); se.appendChild(wrap);
+      }
+      sc.style.display = '';
+      status.textContent = '🎬 Now in the spotlight: ' + v.title;
+      sc.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+    wall.appendChild(c);
+    cards.push(c);
+  });
+
+  var current = 'All';
+  ['All', 'Videos', 'Animated'].forEach(function(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(){ current = label; refresh(); };
+    bar.appendChild(b);
+  });
+
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    emptyCard.style.display = cards.length === 0 ? '' : 'none';
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length + ' featured videos';
+  }
+  refresh();
+})();
+</script>
+</body>
+</html>

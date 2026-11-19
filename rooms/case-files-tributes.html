@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Files &amp; Tributes — KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .chip { display:inline-block; background:#ffe4f2; border-radius:999px; padding:4px 12px; margin:3px; font-size:14px; }
+  .gold { background:#ffd76a; color:#4a234a; font-weight:bold; }
+  .desc { font-size:16px; line-height:1.5; margin:10px 6px 2px; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; transform:scale(1.02); }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>📕 Case Files &amp; Tributes</h1>
+  <img src="icon-doorway.webp" alt="The doorway icon" style="width:92px;border-radius:22px;margin:6px auto 2px;display:block;">
+  <p class="tag">Space Viewing Room No. 4 — the case book, with its descriptions</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a card to put it in the spotlight, filter by kind, or let the room surprise you.</p>
+    <div id="tapFilters"></div>
+    <p><button class="pick" id="tapSurprise" type="button">🎲 Surprise me</button></p>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card">
+    <h2>Tribute No. 1 — Natalee Holloway</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Built</span> <span class="chip">Record</span></p>
+    <p class="desc">Your first Crime Watch tribute, built the day you put all your cases on autopilot — you&#x27;re giving tributes to any victim of any case. Filed inside the case file, like all your tributes.</p>
+  </div>
+  <div class="card">
+    <h2>Tribute No. 2 — Epstein&#x27;s survivors</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Doorway</span> <span class="chip">Record</span></p>
+    <p class="desc">The collective page stays as a doorway — everyone named on it gets their own tribute too.</p>
+  </div>
+  <div class="card">
+    <h2>Tribute No. 3 — Nancy Guthrie</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Built</span> <span class="chip">Record</span></p>
+    <p class="desc">Built the same day as No. 1 and No. 2, once the verification came through.</p>
+  </div>
+  <div class="card">
+    <h2>Tribute No. 4 — Polygamy victims</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Doorway</span> <span class="chip">Record</span></p>
+    <p class="desc">The collective page stays as a doorway. Named survivors get their own tributes as their batches roll in.</p>
+  </div>
+  <div class="card">
+    <h2>Tribute No. 5 — Stephany Flores</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Built</span> <span class="chip">Record</span></p>
+    <p class="desc">Her own individual tribute — she came out of the Natalee Holloway case (No. 1).</p>
+  </div>
+  <div class="card">
+    <h2>Tribute No. 7 — Virginia Giuffre</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Built</span> <span class="chip">Record</span></p>
+    <p class="desc">Her own individual tribute — she came out of the Epstein survivors page (No. 2).</p>
+  </div>
+  <div class="card">
+    <h2>Liam — Forever Remembered wall</h2>
+    <p><span class="chip gold">Tribute</span> <span class="chip">Built</span> <span class="chip">Her words</span></p>
+    <p class="desc">Your tributes to Liam live inside the case file, on the Forever Remembered wall — your words exactly as you wrote them, love stated plainly, never toned down.</p>
+  </div>
+  <div class="card">
+    <h2>The Somerton Man</h2>
+    <p><span class="chip gold">Case file</span> <span class="chip">Open</span> <span class="chip">Record</span></p>
+    <p class="desc">One of the four sourced case files that open the Crime Watch board in the Armchair Detective corner. Status on the board: “A name at last.”</p>
+  </div>
+  <div class="card">
+    <h2>The Coven Academy Shapeshifter Case</h2>
+    <p><span class="chip gold">Case file</span> <span class="chip">Open</span> <span class="chip">Her words</span></p>
+    <p class="desc">Your own storyline, in your own words: faces wall, suspect board, prime-suspect file, twist board, and your detective notes.</p>
+  </div>
+  <div class="card">
+    <h2>Kate</h2>
+    <p><span class="chip gold">Case file</span> <span class="chip">Open</span> <span class="chip">Kiki&#x27;s account</span></p>
+    <p class="desc">Flipped public on your word when you busted the case files wide open — filed under your account, kept separate from the Record ink.</p>
+  </div>
+  <div class="card">
+    <h2>🚪 About this room</h2>
+    <p>The public viewing copy of Kiki's <strong>Case Files &amp; Tributes</strong> Space. The full case book lives in her Muse app,
+    and every entry carries its ink label — RECORD, KIKI'S ACCOUNT, or HER WORDS — kept straight and never merged,
+    with her words kept verbatim. Her accounts are her accounts, labeled as hers.</p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+<script>
+(function(){
+  var KIND_OF = function(c){
+    var chips = c.querySelectorAll('.chip.gold');
+    for (var i = 0; i < chips.length; i++) {
+      var t = chips[i].textContent.replace('★', '').trim();
+      if (t) return t;
+    }
+    return 'More';
+  };
+  var SPOT = '📕 On the board: ';
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  cards = cards.filter(function(c){ return !c.querySelector('h2') || c.querySelector('h2').textContent.indexOf('About this room') === -1; });
+  var kinds = [];
+  cards.forEach(function(c){ c.setAttribute('data-k', KIND_OF(c)); if (kinds.indexOf(c.getAttribute('data-k')) === -1) kinds.push(c.getAttribute('data-k')); });
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var current = 'All';
+  function mkBtn(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(){ current = label; refresh(); };
+    bar.appendChild(b);
+  }
+  mkBtn('All'); kinds.forEach(mkBtn);
+  document.getElementById('tapSurprise').onclick = function(){
+    var vis = cards.filter(function(c){ return c.style.display !== 'none'; });
+    if (!vis.length) return;
+    spot(vis[Math.floor(Math.random() * vis.length)], true);
+  };
+  function spot(card, scroll){
+    cards.forEach(function(c){ c.classList.remove('spot'); });
+    if (card) {
+      card.classList.add('spot');
+      var h = card.querySelector('h2');
+      status.textContent = SPOT + (h ? h.textContent : '');
+      if (scroll) card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){
+      if (c.classList.contains('spot')) { c.classList.remove('spot'); status.textContent = ''; }
+      else spot(c, false);
+    });
+  });
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length;
+    status.textContent = current === 'All' ? '' : 'Showing: ' + current;
+  }
+  refresh();
+})();
+</script>
+</body>
+</html>

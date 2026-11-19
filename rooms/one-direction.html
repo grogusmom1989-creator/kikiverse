@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Direction Tour Blogs · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; }
+  .card img.poster { max-width:100%; border-radius:12px; border:3px solid #b8860b; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .chip { display:inline-block; background:#ffe4f2; border-radius:999px; padding:4px 12px; margin:3px; font-size:14px; }
+  .gold { background:#ffd76a; color:#4a234a; font-weight:bold; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; transform:scale(1.02); }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+  .wantbtn { font-family:inherit; font-size:15px; cursor:pointer; border:3px solid #b8860b; background:#fff; color:#4a234a; border-radius:999px; padding:7px 14px; margin-top:8px; }
+  .wantbtn.on { background:#ffd76a; }
+  .readerbox { white-space:pre-wrap; text-align:left; font-size:17px; line-height:1.55; }
+  .sparklebit { position:absolute; color:#ffd76a; font-size:22px; pointer-events:none; animation:rise 1s ease-out forwards; }
+  @keyframes rise { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-46px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>🎵 One Direction · Tour Blogs</h1>
+  <p class="tag">Space Viewing Room No. 9 · hosted by Encore in Muse</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap a card to put it in the spotlight, filter by kind, or let the room surprise you.</p>
+    <div id="tapFilters"></div>
+    <p><button class="pick" id="tapSurprise" type="button">🎲 Surprise me</button></p>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card">
+    <h2>🎤 The Band · Tour Blogs</h2>
+    <p>News from the band's official social accounts lands on these blogs, stamped with its source.</p>
+  </div>
+  <div class="card">
+    <h2>🎀 Kiki's Designer Poster</h2>
+    <p><span class="chip gold">MADE BY KIKI</span> <span class="chip">Microsoft Designer</span> <span class="chip">Nov 18, 2026</span></p>
+    <p><img class="poster" src="designer-1d-neocities-poster-2026-11-18.jpg" alt="Ways to include One Direction in your Neocities site — a poster Kiki made in Microsoft Designer"></p>
+    <p>Ways to include One Direction in your Neocities site ♡ — Kiki's very first Microsoft Designer creation, made the same day Designer joined her toolbox. Her favourite line is the final tip: it doesn't have to be perfect — just make it something that makes you happy!</p>
+  </div>
+  <div class="card">
+    <h2>Up All Night Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2011 to 2012</span></p>
+    <p>The band&#x27;s first headline tour, from the debut album era.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Take Me Home Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2013</span></p>
+    <p>The second album era tour, stadiums and arenas worldwide.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Where We Are Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2014</span></p>
+    <p>The band&#x27;s big stadium tour.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>On the Road Again Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2015</span></p>
+    <p>The fourth tour, the last before the hiatus.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>🌟 Solo Careers · Tour Blogs</h2>
+    <p>Each boy's own shelf, fed by news from his official accounts.</p>
+  </div>
+  <div class="card">
+    <h2>Harry · Love On Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2021 to 2023</span></p>
+    <p>Harry&#x27;s 169 show trek around the world.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Niall · Dinner Party Live on Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2026</span></p>
+    <p>Launched September 22, 2026 in Birmingham, for the Dinner Party era.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Louis · How Did We Get Here? World Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2026</span></p>
+    <p>Louis&#x27;s solo world tour for this era.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Zayn · KONNAKOL Tour</h2>
+    <p><span class="chip gold">NEWS</span> <span class="chip">2026</span></p>
+    <p>Zayn&#x27;s 2026 solo tour.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>Liam · Solo era</h2>
+    <p><span class="chip gold">NEWS</span></p>
+    <p>No solo headline tour on our record. Liam&#x27;s shelf holds his solo era and his Forever Remembered corner lives in Case Files and Tributes.</p>
+    <p><em>Source: Kiki's collected tour reference</em></p>
+  </div>
+  <div class="card">
+    <h2>🕯️ Liam · Forever Remembered</h2>
+    <p>His Forever Remembered wall lives in Case Files and Tributes. This card is its doorway here.</p>
+  </div>
+  <div class="card">
+    <h2>💖 Kiki's Tour Blog</h2>
+    <p>Kiki's very own tour blog, in her own words. Everyone gets one, so she gets one too. Her first post lands here when she writes it.</p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+<script>
+(function(){
+  var KIND_OF = (function(){
+    var solo = false;
+    return function(c){
+      var h = c.querySelector('h2'); var t = h ? h.textContent : '';
+      if (t.indexOf('Tour Blogs') > -1 && t.indexOf('Solo') === -1 && t.indexOf('Band') > -1) return 'STATIC';
+      if (t.indexOf('Solo Careers') > -1) { solo = true; return 'STATIC'; }
+      if (t.indexOf('Forever Remembered') > -1) return 'Doorways';
+      if (t.indexOf("Kiki's Tour Blog") > -1) return "Kiki's blog";
+      return solo ? 'Solo careers' : 'The Band';
+    };
+  })();
+  var SPOTFN = function(c){ var h = c.querySelector('h2'); return '🎤 On the blog board: ' + (h ? h.textContent : ''); };
+  var EXTRA = null;
+  var all = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var cards = [];
+  all.forEach(function(c){
+    if (c.querySelector('h2') && c.querySelector('h2').textContent.indexOf('About this room') > -1) return;
+    var k = KIND_OF(c);
+    if (k === 'STATIC') return;
+    c.setAttribute('data-k', k);
+    cards.push(c);
+  });
+  var kinds = [];
+  cards.forEach(function(c){ if (kinds.indexOf(c.getAttribute('data-k')) === -1) kinds.push(c.getAttribute('data-k')); });
+  var bar = document.getElementById('tapFilters');
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var current = 'All';
+  function mkBtn(label){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'pick' + (label === current ? ' active' : '');
+    b.textContent = label;
+    b.onclick = function(ev){ ev.stopPropagation(); current = label; refresh(); };
+    bar.appendChild(b);
+  }
+  mkBtn('All'); kinds.forEach(mkBtn);
+  var surp = document.getElementById('tapSurprise');
+  if (surp) surp.onclick = function(){
+    var vis = cards.filter(function(c){ return c.style.display !== 'none'; });
+    if (vis.length) spot(vis[Math.floor(Math.random() * vis.length)], true);
+  };
+  function spot(card, scroll){
+    cards.forEach(function(c){ c.classList.remove('spot'); });
+    if (card) {
+      card.classList.add('spot');
+      status.textContent = SPOTFN(card);
+      if (scroll) card.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){
+      if (c.classList.contains('spot')) { c.classList.remove('spot'); status.textContent = ''; }
+      else spot(c, false);
+    });
+  });
+  function refresh(){
+    var shown = 0;
+    cards.forEach(function(c){
+      var on = (current === 'All' || c.getAttribute('data-k') === current);
+      c.style.display = on ? '' : 'none';
+      if (on) shown++;
+    });
+    Array.prototype.forEach.call(bar.children, function(b){ b.className = 'pick' + (b.textContent === current ? ' active' : ''); });
+    count.textContent = 'Showing ' + shown + ' of ' + cards.length;
+    status.textContent = current === 'All' ? '' : 'Showing: ' + current;
+  }
+  if (EXTRA) EXTRA(cards, status);
+  refresh();
+})();
+</script>
+</body>
+</html>

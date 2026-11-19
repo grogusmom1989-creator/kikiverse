@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fan Notes · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<link rel="apple-touch-icon" href="icon-doorway-180.png">
+<style>
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:#241536; color:#fdf6ff; text-align:center; }
+  .wrap { max-width:760px; margin:0 auto; padding:40px 18px 60px; }
+  .stars { color:#ffd76a; letter-spacing:6px; font-size:20px; }
+  h1 { color:#ffb7dd; font-size:36px; margin:10px 0 4px; }
+  .tag { color:#e7d7ff; font-style:italic; margin:0 0 20px; }
+  a.home { color:#ffd76a; }
+  .card { background:#fff0f5; color:#4a234a; border:3px solid #b8860b; border-radius:18px; padding:22px; margin:16px 0; }
+  .card h2 { margin-top:0; color:#8a2be2; }
+  .card a { color:#8a2be2; font-weight:bold; }
+  footer { margin-top:32px; color:#cbb3ea; font-size:14px; }
+
+  .tapbar { background:#2e1a47; border:3px solid #ffd76a; border-radius:18px; padding:16px; margin:16px 0; text-align:center; }
+  .tapbar p { margin:4px 0 10px; color:#e7d7ff; }
+  button.pick { font-family:inherit; font-size:16px; cursor:pointer; border:3px solid #b8860b; background:#4a234a; color:#fdf6ff; border-radius:999px; padding:9px 15px; margin:4px; }
+  button.pick.active { background:#ffb7dd; color:#4a234a; }
+  .card { transition:transform .15s ease, box-shadow .15s ease; }
+  .card.spot { outline:4px solid #ffd76a; box-shadow:0 0 26px #ffd76a; }
+  #tapStatus { color:#ffd76a; font-size:17px; min-height:22px; margin:10px 0 0; }
+  #tapCount { color:#cbb3ea; font-size:14px; margin:2px 0 0; }
+  .readerbox { white-space:pre-wrap; text-align:left; font-size:17px; line-height:1.55; }
+  .sparklebit { position:absolute; color:#ffd76a; font-size:24px; pointer-events:none; animation:rise 1s ease-out forwards; }
+  @keyframes rise { from { opacity:1; transform:translateY(0); } to { opacity:0; transform:translateY(-52px); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stars">✦ ✦ ✦</div>
+  <h1>💌 Fan Notes</h1>
+  <p class="tag">Little suggestions and sweet notes from Kiki's fans</p>
+  <p><a class="home" href="index.html">← Back home</a></p>
+  <div class="tapbar">
+    <p><strong>✨ Tap power is ON in this room</strong> — tap the wall to send Kiki a sparkle, just for fun.</p>
+    <p id="tapStatus"></p>
+    <p id="tapCount"></p>
+  </div>
+
+  <div class="card">
+    <h2>💖 Welcome to the Fan Notes wall</h2>
+    <p>This is the cozy corner for little suggestions, ideas, and sweet notes for Kiki. Every note Kiki picks gets posted right here on the wall.</p>
+  </div>
+  <div class="card">
+    <h2>📮 Leave Kiki a note</h2>
+    <p>This page is a viewing wall, so it cannot take mail itself. Send your note to Kiki here:</p>
+    <p>🎵 TikTok: <a href="https://www.tiktok.com/@onedirectionhealinghq">@onedirectionhealinghq</a></p>
+    <p>✈️ Telegram: <a href="https://t.me/christinaloveshersugarcookieliam">t.me/christinaloveshersugarcookieliam</a></p>
+    <p>Sprout, her ideas helper, files every note in her Ideas Space, and Kiki herself picks which ones go up on this wall. Nothing is posted without her yes.</p>
+  </div>
+  <div class="card">
+    <h2>🌸 The Wall</h2>
+    <p>No notes posted yet, the wall is brand new and waiting for its first note. Yours could be the first one Kiki picks ✨</p>
+  </div>
+  <footer>© 2026 KikiVerse · onedirectionhealinghq</footer>
+</div>
+
+<script>
+(function(){
+  var status = document.getElementById('tapStatus');
+  var count = document.getElementById('tapCount');
+  var cards = document.querySelectorAll('.card');
+  var wall = null;
+  cards.forEach(function(c){ if (c.querySelector('h2') && c.querySelector('h2').textContent.indexOf('The Wall') > -1) wall = c; });
+  if (!wall) return;
+  var n = 0;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'pick'; b.textContent = '✨ Send Kiki a sparkle';
+  b.onclick = function(){
+    n++;
+    count.textContent = 'Sparkles sent on this visit: ' + n + ' — just for fun on this page. Real notes go to Kiki on TikTok or Telegram, and she posts her picks here herself.';
+    status.textContent = '✨ Sparkle sent!';
+    for (var i = 0; i < 6; i++) {
+      var s = document.createElement('span');
+      s.className = 'sparklebit'; s.textContent = '✦';
+      s.style.left = (30 + Math.random() * 40) + '%';
+      s.style.bottom = '12px';
+      wall.appendChild(s);
+      (function(el){ setTimeout(function(){ el.remove(); }, 1000); })(s);
+    }
+  };
+  wall.style.position = 'relative';
+  wall.appendChild(b);
+})();
+</script>
+</body>
+</html>

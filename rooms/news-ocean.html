@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The News Ocean · KikiVerse</title>
+<link rel="icon" type="image/png" href="icon-doorway.png">
+<style>
+  body { background:#241536; color:#3a2340; font-family: Georgia, serif; margin:0; padding:24px 14px 48px; }
+  .wrap { max-width:860px; margin:0 auto; }
+  h1 { color:#ffb7dd; text-align:center; font-size:34px; margin:8px 0 4px; }
+  .sub { color:#ffd76a; text-align:center; margin:0 0 20px; }
+  .card { background:#fff0f5; border:2px solid #b8860b; border-radius:18px; padding:18px 20px; margin:0 0 16px; }
+  .card h3 { margin:6px 0; color:#7a1f6d; }
+  .card p { margin:6px 0; line-height:1.55; }
+  .fbtn { background:#ffd76a; color:#4a234a; border:2px solid #b8860b; border-radius:999px; padding:8px 16px; font-family:Georgia,serif; font-size:15px; cursor:pointer; margin:0 4px 8px 0; }
+  .fbtn.active { background:#ffb7dd; }
+  a.back { color:#ffd76a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p><a class="back" href="index.html">&larr; Back home</a></p>
+  <h1>🌊 The News Ocean</h1>
+  <p class="sub">Viewing Room No. 11 · hosted by Herald · every news lane in one calm ocean</p>
+  <div class="card">
+    <p>Herald keeps every news lane in one calm ocean. If it is new in Kiki's world, it washes up here. Rumors always wear a RUMOR chip.</p>
+    <p>
+    <button class="fbtn active" onclick="filterCat('all', this)">All news</button>
+    <button class="fbtn" onclick="filterCat('rumors', this)">🏖️ Rumor Corner</button>
+    <button class="fbtn" onclick="filterCat('Her Bands', this)">Her Bands</button>
+    <button class="fbtn" onclick="filterCat('Shows &amp; Streaming', this)">Shows &amp; Streaming</button>
+    <button class="fbtn" onclick="filterCat('Games', this)">Games</button>
+    <button class="fbtn" onclick="filterCat('Her Teams', this)">Her Teams</button>
+    <button class="fbtn" onclick="filterCat('Eurovision', this)">Eurovision</button>
+    <button class="fbtn" onclick="filterCat('Cozy Extras', this)">Cozy Extras</button>
+    <button class="fbtn" onclick="filterCat('Movies', this)">Movies</button>
+    <button class="fbtn" onclick="filterCat('Samsung', this)">Samsung</button>
+    </p>
+  </div>
+  <div class="card nitem" data-cat="Her Bands"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Her Bands</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Jonas Brothers added tour dates</h3><p>Austin on Nov 13 and the Hollywood Bowl on Nov 18 and 19.</p></div>
+  <div class="card nitem" data-cat="Shows &amp; Streaming"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Shows &amp; Streaming</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>WWE Main Event results are in</h3><p>The Nov 11 Main Event results landed.</p></div>
+  <div class="card nitem" data-cat="Shows &amp; Streaming"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Shows &amp; Streaming</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Dance Moms: A New Era Season 3</h3><p>Season 3 arrives on Hulu on Dec 3.</p></div>
+  <div class="card nitem" data-cat="Games"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Games</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Disney Speedstorm Season 23 details</h3><p>Season 23 details are out, launching Nov 19.</p></div>
+  <div class="card nitem" data-cat="Her Teams"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Her Teams</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Mahomes full participant at Chiefs practice</h3><p>Patrick Mahomes was a full participant at practice on Nov 11.</p></div>
+  <div class="card nitem" data-cat="Her Teams"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Her Teams</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Bucs storyline: Suh vs Mahomes</h3><p>A Suh versus Mahomes storyline is making the rounds for the Bucs.</p></div>
+  <div class="card nitem" data-cat="Eurovision"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Eurovision</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Luxembourg Song Contest 2027 finalists soon</h3><p>The finalists reveal date for the Luxembourg Song Contest 2027 is set.</p></div>
+  <div class="card nitem" data-cat="Cozy Extras"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Cozy Extras</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>New plush drops and a rescue story</h3><p>Aflac Duck, Niffler, Mofusand, and McDonald&#x27;s Palm Pals plush releases, plus a sweet Oklahoma animal rescue story.</p></div>
+  <div class="card nitem" data-cat="Movies"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Movies</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · News Ocean sweep</span></p><h3>Children of Blood and Bone trailer</h3><p>A first trailer dropped today for Children of Blood and Bone.</p></div>
+  <div class="card nitem" data-cat="Samsung"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Samsung</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · SamMobile</span></p><h3>One UI 9.5 development started for the S25 series</h3><p>The next big update for Kiki&#x27;s S25+ is officially in development.</p></div>
+  <div class="card nitem" data-rumor="1" data-cat="Samsung"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Samsung</span> <span style="background:#c0392b;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;">RUMOR</span> <span style="color:#7a4a8c;">Nov 12, 2026 · Samsung news sweep</span></p><h3>One UI 9.5 Phone and Contacts redesign leak</h3><p>A leak shows a redesigned Phone and Contacts app coming in 9.5.</p></div>
+  <div class="card nitem" data-rumor="1" data-cat="Samsung"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Samsung</span> <span style="background:#c0392b;color:#fff;border-radius:999px;padding:2px 10px;font-size:12px;">RUMOR</span> <span style="color:#7a4a8c;">Nov 12, 2026 · Samsung news sweep</span></p><h3>S26 One UI 9.5 beta getting closer</h3><p>Reports say the S26 One UI 9.5 beta is drawing closer.</p></div>
+  <div class="card nitem" data-cat="Samsung"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Samsung</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · Samsung news sweep</span></p><h3>Samsung Wallet adds Coinflow and Bastion cash-out</h3><p>Samsung Wallet added Coinflow and Bastion cash-out options.</p></div>
+  <div class="card nitem" data-cat="Samsung"><p><span style="background:#241536;color:#ffd76a;border-radius:999px;padding:2px 10px;font-size:12px;">Samsung</span>  <span style="color:#7a4a8c;">Nov 12, 2026 · Samsung news sweep</span></p><h3>Her gear watch: patches pending</h3><p>S25+ November patch still pending; Tab A11 still in its November window; Watch 9 no new build.</p></div>
+</div>
+<script>
+function filterCat(cat, btn){
+  var btns = document.querySelectorAll('.fbtn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  var items = document.querySelectorAll('.nitem');
+  for (var j = 0; j < items.length; j++) {
+    items[j].style.display = (cat === 'all' || items[j].getAttribute('data-cat') === cat || (cat === 'rumors' && items[j].getAttribute('data-rumor') === '1')) ? 'block' : 'none';
+  }
+}
+</script>
+</body>
+</html>
